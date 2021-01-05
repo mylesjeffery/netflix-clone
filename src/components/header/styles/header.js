@@ -23,9 +23,9 @@ export const PlayButton = styled.button`
 	background-color: #e6e6e6;
 	color: #000;
 	border-width: 0;
-	padding: 10px 20px;
+	padding: 10px 0;
 	border-radius: 5px;
-	max-width: 130px;
+	max-width: 100px;
 	font-weight: bold;
 	font-size: 20px;
 	margin-top: 10px;
