@@ -62,7 +62,9 @@ export const Button = styled.button`
 	}
 `
 
-export const Link = styled(ReactRouterLink)``
+export const Link = styled(ReactRouterLink)`
+	text-decoration: none;
+`
 
 export const Text = styled.p`
 	font-size: 19.2px;
