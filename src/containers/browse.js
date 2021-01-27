@@ -1,18 +1,22 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Fuse from 'fuse.js'
-import { SelectProfileContainer } from './profiles'
-import { FooterContainer } from './footer'
-import { FirebaseContext } from '../context/firebase'
-import { Header, Loading, Card, Player } from '../components'
+import { Card, Header, Loading, Player } from '../components'
 import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
+import { FirebaseContext } from '../context/firebase'
+import { SelectProfileContainer } from './profiles'
+import { FooterContainer } from './footer'
+import { useWindowSize } from '../hooks/'
 
 export function BrowseContainer({ slides }) {
 	const [category, setCategory] = useState('series')
-	const [searchTerm, setSearchTerm] = useState('')
 	const [profile, setProfile] = useState({})
 	const [loading, setLoading] = useState(true)
+	const [searchTerm, setSearchTerm] = useState('')
 	const [slideRows, setSlideRows] = useState([])
+
+	const width = useWindowSize()
+	const numOfThumbs = width > 1500 ? 6 : width > 1200 ? 5 : width > 900 ? 4 : width > 600 ? 3 : 2
 
 	const { firebase } = useContext(FirebaseContext)
 	const user = firebase.auth().currentUser || {}
@@ -77,6 +81,7 @@ export function BrowseContainer({ slides }) {
 						</Header.Profile>
 					</Header.Group>
 				</Header.Frame>
+
 				<Header.Feature>
 					<Header.FeatureCallout>Watch Joker Now</Header.FeatureCallout>
 					<Header.Text>
@@ -93,19 +98,38 @@ export function BrowseContainer({ slides }) {
 				{slideRows.map((slideItem) => (
 					<Card key={`${category}-${slideItem.title.toLowerCase()}`}>
 						<Card.Title>{slideItem.title}</Card.Title>
-						<Card.Entities>
-							{slideItem.data.map((item) => (
-								<Card.Item key={item.docId} item={item}>
-									<Card.Image
-										src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
-									/>
-									<Card.Meta>
-										<Card.SubTitle>{item.title}</Card.SubTitle>
-										<Card.Text>{item.description}</Card.Text>
-									</Card.Meta>
-								</Card.Item>
-							))}
-						</Card.Entities>
+						<Card.Pane>
+							<Card.PrevButton>‹</Card.PrevButton>
+							<Card.Entities>
+								{slideItem.data.map((item) => (
+									<Card.Item
+										key={item.docId}
+										item={item}
+										numOfThumbs={numOfThumbs}
+									>
+										<Card.Image
+											src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
+										/>
+										<Card.Meta>
+											<Card.SubTitle>{item.title}</Card.SubTitle>
+											<Card.Text>{item.description}</Card.Text>
+										</Card.Meta>
+									</Card.Item>
+								))}
+								{slideItem.data.map((item) => (
+									<Card.Item key={`${item.docId}2`} item={item}>
+										<Card.Image
+											src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
+										/>
+										<Card.Meta>
+											<Card.SubTitle>{item.title}</Card.SubTitle>
+											<Card.Text>{item.description}</Card.Text>
+										</Card.Meta>
+									</Card.Item>
+								))}
+							</Card.Entities>
+							<Card.NextButton>›</Card.NextButton>
+						</Card.Pane>
 						<Card.Feature category={category}>
 							<Player>
 								<Player.Button />
