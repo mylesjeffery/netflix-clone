@@ -37,7 +37,7 @@ const slideRows = [
 ]
 
 describe('<Card />', () => {
-	it('renders the <Card /> with populated datat', () => {
+	it('renders the <Card /> with populated data', () => {
 		const { container, getByText } = render(
 			<Card.Group>
 				{slideRows.map((slideItem) => (
