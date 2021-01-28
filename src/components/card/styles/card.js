@@ -165,6 +165,9 @@ export const Item = styled.div`
 	}
 	@media (min-width: 600px) {
 		width: ${100 / 3}%;
+		&:hover {
+			transform: none;
+		}
 	}
 	@media (min-width: 900px) {
 		width: ${100 / 4}%;
