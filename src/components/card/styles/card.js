@@ -65,7 +65,7 @@ export const PrevButton = styled.button`
 	height: 100%;
 	left: 0;
 	top: 0;
-
+	padding: 0;
 	background-color: rgba(0, 0, 0, 0.3);
 	border: none;
 	font-size: 50px;
@@ -88,6 +88,7 @@ export const NextButton = styled.button`
 	height: 100%;
 	right: 0;
 	top: 0;
+	padding: 0;
 	background-color: rgba(0, 0, 0, 0.3);
 	border: none;
 	font-size: 50px;
