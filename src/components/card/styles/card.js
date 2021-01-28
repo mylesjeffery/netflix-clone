@@ -159,14 +159,11 @@ export const Item = styled.div`
 	cursor: pointer;
 	transition: transform 0.2s;
 
-	&:hover {
-		transform: scale(1.3);
-		z-index: 99;
-	}
 	@media (min-width: 600px) {
 		width: ${100 / 3}%;
 		&:hover {
-			transform: none;
+			transform: scale(1.3);
+			z-index: 99;
 		}
 	}
 	@media (min-width: 900px) {
