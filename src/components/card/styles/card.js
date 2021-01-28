@@ -61,7 +61,7 @@ export const Pane = styled.div`
 
 export const PrevButton = styled.button`
 	position: absolute;
-	width: 56px;
+	width: 30px;
 	height: 100%;
 	left: 0;
 	top: 0;
@@ -77,14 +77,14 @@ export const PrevButton = styled.button`
 	&:hover {
 		font-size: 75px;
 	}
-	@media (max-width: 1000px) {
-		width: 30px;
+	@media (min-width: 1000px) {
+		width: 56px;
 	}
 `
 
 export const NextButton = styled.button`
 	position: absolute;
-	width: 56px;
+	width: 30px;
 	height: 100%;
 	right: 0;
 	top: 0;
@@ -100,8 +100,8 @@ export const NextButton = styled.button`
 		font-size: 75px;
 	}
 
-	@media (max-width: 1000px) {
-		width: 30px;
+	@media (min-width: 1000px) {
+		width: 56px;
 	}
 `
 

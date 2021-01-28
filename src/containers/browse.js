@@ -37,6 +37,7 @@ export function BrowseContainer({ slides }) {
 
 		if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
 			setSlideRows(results)
+			console.log(results)
 		} else {
 			setSlideRows(slides[category])
 		}
